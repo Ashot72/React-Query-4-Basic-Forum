@@ -1,0 +1,1506 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:24.0pt;line-height:107%'>React Query 4 Basic Forum</span></p>
+
+<p class=MsoNormal><span lang=ES style='font-size:14.0pt;line-height:107%'>Video:
+</span><a href="https://youtu.be/nXeD3b5vr7I" target="_blank"><span lang=ES
+style='font-size:14.0pt;line-height:107%'>https://youtu.be/nXeD3b5vr7I</span></a></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>GitHub Repo:
+</span><a href="https://github.com/Ashot72/React-Query-4-Basic-Forum"
+target="_blank"><span style='font-size:14.0pt;line-height:107%'>https://github.com/Ashot72/React-Query-4-Basic-Forum</span></a></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>React Query </span><a
+href="https://tanstack.com/query/v4" target="_blank"><span style='font-size:
+14.0pt;line-height:107%'>https://tanstack.com/query/v4</span></a><span
+style='font-size:14.0pt;line-height:107%'> is a ReactJS preconfigured data
+management library which gives you power and control over server-side state
+management,</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>fetching and
+caching of data, and error handling in a simple and declarative way without
+affecting the global state of your application.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>There is a
+difference between <b>client state and server state</b>. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1210 height=548 id="Picture 1" src="doc_files/image001.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 1</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>By client
+state we mean any information that is relevant to your Web browser session, for
+example, a user might choose a language so that they can read the text in the </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>language
+they know best or theme. This does not have anything to do with what might be
+going on the server. It simply tracking what the state is for this particular
+user.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Server side,
+on the other hand, is data that is stored on the server but is needed to
+display on the client. An example of that might be blog post data that you are
+storing in a database.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You need
+this data on the client to display to your user. But the data stored on the
+server can be persisted to multiple clients.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1208 height=539 id="Picture 2" src="doc_files/image002.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 2</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>React Query
+maintains a cache of server data on the client. The way this looks is when the
+react code needs data from the server, it does not go straight to the server
+using,</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>say, <i>fetch</i>
+or <i>Axios</i>. Instead, it asks the React Query cache that is the source of
+truth for the server data and React Queries.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1208 height=276 id="Picture 3" src="doc_files/image003.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 3</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>React Query
+manages the data and it is your job to indicate when you want to update the
+cache with new data from the server. You can do it <i>imperatively</i> by just
+telling the query</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>client that
+you want to invalidate this data and get new data form the server to replace it
+in the cache or you can do it <i>declaratively</i>. You can say how you want to
+trigger re-fetch, for example,</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>when the
+browser window is refocused. We will be going over this in a lot more detail.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1163 height=609 id="Picture 4" src="doc_files/image004.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 4</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>React Query
+comes with a lot of other tools to help you with your server state management.
+It maintains loading and error states for every query to the server so that you
+do not have to do</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>that
+manually. It gives you tools to fetch data in pieces just when it is needed by
+the user for pagination of the data or an infinite scroll. You can prefetch
+data if you anticipate that the user</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is going to
+need it so you can pre-fetch the data, put it in the cache, and then when the
+user does need the data, your app can draw the data from the cache and the user
+does not have to</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>wait for you
+to contact the server.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>React
+Queries can also manage mutations or updates of data on the server. Since
+queries are identified by a key, React Query can manage your requests so that
+if you load a page and</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>several
+components in that page, request the same data, React Query can send the query
+only once and if another component requests the data while that original query
+is going out, then</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>React Query
+can duplicate the requests. React Query can also manage retries if you get an
+error from the server and it provides callbacks so that you can take actions if
+your query</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is
+successful, if it returns an error, or you can provide a callback to take an
+action in either case.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1389 height=832 id="Picture 5"
+src="doc_files/image005.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 5</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In our
+project after we installed React Query 4 package, at the top of our component
+tree we need to add the React Query provider and provide the</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>client to
+our application. Now, we have access to every and method that React Query
+provides. Let</span><span style='color:black'>'</span><span style='font-size:
+14.0pt;line-height:107%'>s run a query and fetch <i>forum</i></span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+data from our list service.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1400 height=660 id="Picture 6"
+src="doc_files/image006.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 6</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We define
+useForums hook and call it from the forums component to retrieve forums</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+from QR_Forums SharePoint list.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>As its core,
+React Query manages query caching for you based on query keys. Query keys have
+to be an Array at the top level, can be as simple</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>as an Array
+with a single string, or as complex as an array of many strings and nested
+objects. As long as the query is serializable, and unique</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to the query</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+data, we can use it. For forums we defined <i>queryKey: [queryKeys.forums]</i>
+where <i>queryKeys.forums</i></span> <span style='font-size:14.0pt;line-height:
+107%'>is <i>forums</i> string.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Next, we
+defined Query function which can be any function that returns a promise. The
+promise that is returned should either resolve the data</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>or throw an
+error. Our query function is <i>queryFn: () =&gt; ListService.getForums() </i>to
+retrieve forums.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1020 height=470 id="Picture 7"
+src="doc_files/image007.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 7</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When you add
+the web part for the first time it will generate 3 lists that the app makes use
+of it.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=905 height=864 id="Picture 8"
+src="doc_files/image008.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 8</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When you
+begin your React Query journey, you will want these <i>devtools</i> by your
+side. They help visualize all of the</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>inner
+workings of React Query and will likely save you hours of debugging.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1057 height=523 id="Picture 9"
+src="doc_files/image009.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 9</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I enabled
+Devtools from the property pane and refreshed the Forums</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+page. In the dev tool you see the forums</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'> label which was <i>forums</i> key
+(Figure 6) and it is green.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1273 height=736 id="Picture 10"
+src="doc_files/image010.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 10</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>If you go to
+topics page and refresh the browser you will see that in this case data are
+stale as opposed to forums where they are fresh.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>What does it
+mean for data to be stale?</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1136 height=557 id="Picture 12"
+src="doc_files/image011.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 11</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Data
+re-fetch only triggers for stale data and there are several things that will
+trigger this. For example, component remount, windows focus etc.</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>staelTime
+</span></i><span style='font-size:14.0pt;line-height:107%'>translates to </span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>max-age</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+that you are allowing you data to be, or how long would you tolerate this data
+potentially being out of date.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>That is the
+stale time. If you think it is OK for data to be 10 seconds old, when is
+displaying on your website, then you would set a steal time to 10 seconds.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>This is
+going to depend on the nature of the data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1057 height=510 id="Picture 11"
+src="doc_files/image012.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 12</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In <i>useForums</i>
+hook the option we are going to update is <i>staleTime</i> and it is in
+milliseconds. I am going to allow forums page to be out of date</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>up to 10
+minutes as new forums are not coming frequently. That is the reason it is fresh
+(Figure 9) and forums will only be fetched if data is stale.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The next
+question is, why would the stale time default to zero? By defaulting to a stale
+time of zero, we are always assuming that the data is out of date</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>and that it
+needs to be re-fetched from the server. That makes it much less likely that you
+are going to accidentally have out of date data on the client.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>What is the
+difference between <i>staleTime</i> and <i>cashTime</i>?</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1139 height=583 id="Picture 13"
+src="doc_files/image013.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 13</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>As we
+already know staleTime is consideration when refreshing. The cash is data that
+might be needed later. So, if there is no active query for a particular</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>query, then
+that data ques into cold storage, the data in the cache expires after the
+configured cache time. So, by default, that configure time is five minutes.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The amount
+of time that the cache time is observing is how long since used query has been
+active for this particular  query, how long since a component</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>that is
+displaying on the page is using a used query for this particular query. After
+the cash expires, the data is garbage collected and no longer available to</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>the client.
+But while the data is in cache, it can be used to display while you are
+fetching, it is not going to stop the data from being fetched so that it</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>can be
+refreshed with the most recent data n the server. It will keep you from having
+to display a blank page and it is better to show data might be slightly</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>out of date
+while you are collecting new data than not to show anything at all. If you do
+not agree with that, if out-of-date data is going to be very</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>dangerous
+for your particular application, then you can just set cash time to zero.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=908 height=553 id="Picture 14"
+src="doc_files/image014.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 14</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We also
+specified two properties <i>refetchOnMount </i>and <i>refetchOnReconnect</i>
+and set them <i>false</i>. The query will not re-fetch on mount</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>if data are
+stale. The same is true with <i>refetchOnReconnect</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1021 height=683 id="Picture 15"
+src="doc_files/image015.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 15</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We can also
+apply the settings globally for all our queries and overwrite them with
+individual query options. <i>refetchOnWindowFocus</i> </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is applied
+to all queries. We also gave a default option for an error handling for our
+queries by not giving for each one individually.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1087 height=369 id="Picture 16"
+src="doc_files/image016.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 16</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When you
+refresh forums page you will see <i>Fetching data</i> loading indicator. React
+query result has two properties <i>isLoading</i> and <i>isFetching</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Let</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+see the difference.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1135 height=574 id="Picture 18"
+src="doc_files/image017.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 17</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'> isFetching
+is true when the async query function had not yet resolved. We are still
+fetching. isLoading is the condition</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>where
+isFetching is true plus where you have no cached data for the query. So any
+time you are isLoading, any time isLoading is true, is fetching</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is also
+true. isLoading is a subset of isFetching where you actually do not have any
+cash data and you are fetching the data. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In our
+application I did not use isLoading and I think that most of the time you will
+be using it than isFetching.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1300 height=702 id="Picture 19"
+src="doc_files/image018.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 18</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You can see
+that forums query result returns the actual data, isLoading and isFetching
+properties and <i>refetch</i> function in useQuery return object to
+imperatively re-fetch data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We also log
+isLoading and isFetching on the console.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1189 height=869 id="Picture 20"
+src="doc_files/image019.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 19</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Let</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+load Forums page. You see that both isFetching and isLoading is true as we are
+fetching data and no cached data. Once we received forums</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+data both isLoading and</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>isFetching
+are false. We got data and are in cache.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1313 height=709 id="Picture 21"
+src="doc_files/image020.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 20</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Now let</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+click on the refresh icon to re-fetch data by calling refetch function. You see
+that isLoading is false as we have cached data but isFetching is true as we are
+getting data</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>from the
+server and once data are retrieved both isFetching and isLoading are false.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1352 height=496 id="Picture 22"
+src="doc_files/image021.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 21</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>As an
+experiment let</span><span style='color:black'>'</span><span style='font-size:
+14.0pt;line-height:107%'>s remove the cache and click on refresh icon to re-fetch
+data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1254 height=479 id="Picture 23"
+src="doc_files/image022.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 22</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><br>
+As there is no data in the cache both isLoading and isFetching are initially
+true.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1311 height=850 id="Picture 24"
+src="doc_files/image023.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 23</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In our app
+we do not use isFetching property, and we used that just to console isFetching
+value but we still show the Loading Indicator </span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>Fetching data</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+(Figure 16)</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>on every
+page. In our app we have a centralized spinner that is just going to be a part
+of our app component and will turn it on if any query isFetching, and will</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>turn it off
+if there are not any queries that are fetching. <i>useIsFetching</i> is the
+magical hook that tells us whether there are any queries that are currently
+fetching.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>This means
+we do not use isFetching for each of our custom hooks. Instead, we can use
+useIsFetching. We can use this hook in our loading component, and</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>the value of
+useIsFetching will tell us whether or not to display the spinner. The same is
+true with useIsMutating when we send data to the server.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1348 height=704 id="Picture 25"
+src="doc_files/image024.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 24</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Let</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+understand re-fetching so we will be able to make better decision about
+suppressing refetches or using polling and so forth.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=963 height=530 id="Picture 27"
+src="doc_files/image025.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 25</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In general
+background re-fetching ensures that your stale data gets updated from the
+server and you remember we talked about stale data and that means</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>how long you
+are willing to accept data that might be out of date with the server. By
+default, you will see refetching when you leave the page and refocus.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=917 height=545 id="Picture 26"
+src="doc_files/image026.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 26</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>For example,
+if you navigate to the app tab from another tab then data will be refetched,
+unless refetchOnWindowFocus is set to false.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>So, every time
+we refocus the window it is going to fetch any active, stale data. By default,
+stale queries are automatically fetched in the</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>background
+upon certain conditions; when new instances of the query mount, when the query
+with that key is called for the first time;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>every time
+you mount a react component that calls a query; when the window is re-focused; when
+the network is reconnected, that seems like a good time to check</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to see
+whether your stale data has been updated; when a configured refresh interval
+has elapsed that is if you want to fetch on an interval to pull the</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>server to
+make sure that is staying up to date even if there is no user action. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=957 height=534 id="Picture 28"
+src="doc_files/image027.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 27</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We can
+control with these options and they can either be global (Figure 15) for your
+query client in general or they can be specific (Figure 12) </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to the
+useQuery call. refetchOnmount, refetchOnWindowFocus, refetchOnReconnect,
+refetchInterval, the first three are booleans and the last one</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is a time in
+milliseconds. We can also refetch imperatively as we already saw it (Figure 20).
+By default, React Query is pretty aggressive with fetch.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>All of these
+options are set to true except for refetchInterval which is not set. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1002 height=485 id="Picture 29"
+src="doc_files/image028.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 28</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You may want
+to suppress refetch. You can do it by increasing the stale time, because even
+for those triggers, for example, window refocused or</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>network
+reconnect, these triggers will only trigger a refetch if the data is actually stale
+or you can turn off the one or all of those boolean options.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You probably
+want to be pretty careful about suppressing refetch, you only want to do it for
+data that does not change very often and is not going</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to make s
+huge difference to your users if it is slightly out of date. In our app for
+forums page we set stale time to 10 minutes as forums will not</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>be created
+frequently. It is probably not going to make a huge difference to our users if
+those are a few minutes out of date.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=984 height=568 id="Picture 33"
+src="doc_files/image029.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 29</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>For demo
+purposes we can also pull forums</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'> data by configuring refetchInterval
+property. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1357 height=537 id="Picture 32"
+src="doc_files/image030.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 30</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I set it to
+2 seconds and at two seconds interval you will see switching between <i>fresh</i>
+and <i>fetching</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1355 height=674 id="Picture 34"
+src="doc_files/image031.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 31</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We are on
+forums page and trying to edit a forum. When you click on the edit icon, you
+may notice that forum</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s data appear inside text fields
+before the loading icon. I mean somehow, we could</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>get and
+display the forum</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s info inside text fields and some
+milliseconds later new data are retrieved from the server and replaced with the
+current ones.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1392 height=787 id="Picture 35"
+src="doc_files/image032.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 32</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When we load
+forums page, RectQuery puts forums</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'> data into cache. Once we edit a
+forum, we could get the editing forum info form the cache and display it to a
+user before getting the forum data</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>from the
+server. Background refetch is initiated and once the forum</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+details are retrieved, they will overwrite any initial data we might have set.
+This way we improve the data viewing experience</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>for a user
+by providing initial query data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1306 height=711 id="Picture 36"
+src="doc_files/image033.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 33</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In useForums
+hook we have useForum function to get the forum</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s data from the server. But you see
+we also defined initialData function to get the forum</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+data from the forums cache</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>via
+getQueryData function.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1428 height=844 id="Picture 38"
+src="doc_files/image034.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 34</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In the dev
+tools you see that we actually set initial data from forums cache. If forums
+cache was expired then initial data would be undefined and no initial data
+would be set.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1231 height=833 id="Picture 39"
+src="doc_files/image035.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 35</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You may notice
+that we used pagination in topics page. In this sample we have two pages. In
+the dev tools we have [</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>topics</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>, 0] key for the first page and [</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>topics:</span><span
+style='color:black'> '</span><span style='font-size:14.0pt;line-height:107%'>
+1] key </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>for the
+second page and the second page actually has one topic. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1288 height=587 id="Picture 40"
+src="doc_files/image036.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 36</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In
+Topics.tsx page we defined skip state variable and pageItems is two. We disable
+</span><span style='color:black'>'</span><span style='font-size:14.0pt;
+line-height:107%'>&lt; Prev Page</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'> button when we are on the first page
+and disable </span><span style='color:black'>'</span><span style='font-size:
+14.0pt;line-height:107%'>Next Page &gt;</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'> button when we are on</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>the last
+page.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1013 height=688 id="Picture 41"
+src="doc_files/image037.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 37</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The
+important thing here is that we should assign a new key for each page data. If
+we load the first page then the key is [</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>topics</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>, 0]</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>for the next
+one [</span><span style='color:black'>'</span><span style='font-size:14.0pt;
+line-height:107%'>topics</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>, 1] and so on. You should treat keys
+as dependency arrays. If the data is going to change, you want to make sure</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>key changes
+so that you get new data so that it makes a new query. If you specify, say, [</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>topics</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>]
+as a key then when you try to load the second page</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>it will not
+load new data; it will just get data from the cache that you have fetched for
+the initial page. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We also
+specified keepPreviousData which means that the data from the last successful
+fetch is available while new data is being requested</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>even though
+the query key has changed. Suppose, we are on the second page that we navigated
+from the first one. Suppose, someone</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>updated the first
+topic</span><span style='color:black'>'</span><span style='font-size:14.0pt;
+line-height:107%'>s info. When you navigate back to the first page with
+keepPreviousData it will show you first page topics data from the cache</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>then after
+fetching new topics data, it will transparently be swapped to show the new data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1007 height=531 id="Picture 42"
+src="doc_files/image038.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 38</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>While we are
+discussing useTopics I want to show something related enabled queries.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1009 height=840 id="Picture 43"
+src="doc_files/image039.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 39</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I was on
+topics page and refreshed the browser. In useTopics hook we provide forumId but
+for a moment let</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s assume that we have to get the
+forum information</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>by calling
+useForum hook. In other words, useForum hook will give us the forum info where
+we can get the forum Id from and pass is to the next query to retrieve topics</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>that belong
+to the forum with the specified forum Id. You should notice that the forum info
+may not be immediately available as it takes time to load.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We want the
+second query that retrieves topics to be fired only after the forum Id has been
+retrieved. For that reason, we set enabled property. With <i>enabled </i>we are
+saying</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>that only
+after the forum Id is retrieved fetch topics. You see in the picture above that
+when forum Id is not available then the second query that retrieves topic will
+not be executed.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>It is
+disabled and once the forum Id is available then the second query will run.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1332 height=778 id="Picture 44"
+src="doc_files/image040.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 40</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Similar to
+forums we also use initialData to show a topic</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s info from the topics cache before
+retrieving it from the server and swapping transparently.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1132 height=811 id="Picture 45"
+src="doc_files/image041.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 41</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Our forum</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>s
+post page is using infinite queries. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1107 height=438 id="Picture 46"
+src="doc_files/image042.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 42</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>useInifiniteQuery
+is different from useQuery in some key ways that are not always obvious. The
+first way is that the data, the data property that is</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>returned in
+the return object is a different shape with use query. The data was simply the
+data that was returned from the query function, but with</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>useInfiniteQuery.
+The object actually has two properties. The data object has two properties. It
+has <i>pages</i>, which is an array of objects for each page of data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>So, each
+element in the page array would correspond to what you would get for data from
+a single useQuery. Then there is <i>pageParams</i> and that is recording</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>what your
+program is for every page. Every query has its own element in the pages array,
+and that element represents the data for that query. The query</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is going to
+change as we advance the pages and then pageParmas keeps track of the keys of
+the queries that has been retrieved.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=940 height=657 id="Picture 47"
+src="doc_files/image043.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 3</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I loaded the
+post page and clicked on </span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>load More</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+button twice. We have three pages with three pageParams and each page contains
+2 posts (pageItems is 2) and overall posts count which is 8 in this case.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1019 height=398 id="Picture 48"
+src="doc_files/image044.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 44</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The
+useInifiniteQuery syntax also differs from useQuery and this is where the power
+is. This is where we can use it to keep our infinite scroll going.</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>pageParam</span></i><span
+style='font-size:14.0pt;line-height:107%'> is a param is a parameter passed to
+the query function and that looks like this. The current value of pageParam is
+actually maintained by React Query.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>It is not
+part of the component state and the way we do that is with an option to use
+infinite query. There is a getNextPageParam option, which is a function</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>that will tell
+it how to get the next page, either from the data from the last page or from
+the data for all pages.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1108 height=512 id="Picture 49"
+src="doc_files/image045.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 45</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>There are
+also some properties of the return object that are different from use query.
+One is fetchNextPage. This is the function that we want to call whenever</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>the use
+needs more data, so even when they click the button that asks for more data or
+when they hit the point on the screen where they are about to tun </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>out of data.
+Another one is hasNextPage, this is based on the return value of that
+getNextPageParam function, the property that we pass to useInfiniteQuery</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to tell it
+how to use the data from the last query to get whatever our next query is going
+to be. If this is undefined that means that there is going to be no more</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>data and
+hasNextPage will be false. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We also have
+isFetchingNextPage, this is something that useQuery did not have any concept of
+but useInfiniteQuery can distinguish between whether it is</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>fetching the
+next page or whether it is just fetching in general.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1299 height=774 id="Picture 50"
+src="doc_files/image046.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 46</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Here
+infinite query implementation for posts page.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=827 height=436 id="Picture 52"
+src="doc_files/image047.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 47</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>If you
+navigate to topics page from forums page and then navigate back to forums page
+you will not see the loader </span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>Fetching data</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+indicator because forums data are fresh</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>about 10
+minutes, so no network call. If you go form posts to topics page you will
+always see the loading indicator as topics</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'> stale time is zero. Every time you
+are back from posts</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to topics
+then network call is made.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1309 height=501 id="Picture 53"
+src="doc_files/image048.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 48</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In some cases,
+we should load forums data even if forums are fresh. For example, we add a new
+topic or reply a post then topics or posts count should be changed and the last
+poster</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>could also
+be another user.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1468 height=798 id="Picture 56"
+src="doc_files/image049.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 49</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I navigated
+from forums page to topics page and trying to add a new topic. What I am going
+to do is that once a new topic is created, I am going to remove forums from the
+cache.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When I
+navigate back from topics page to forums page a network call will be made and
+forums will be loaded from the server as forums are not in the cache anymore.
+As</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>we are
+getting fresh data from the server we will see right topics and posts count and
+the last poster.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=625 height=824 id="Picture 57"
+src="doc_files/image050.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 50</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I created a
+new topic and forums was removed from the cache.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1264 height=506 id="Picture 58"
+src="doc_files/image051.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 51</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Now, when I
+navigate form topics to forums page (Figure 47) you will see that forums are
+retrieved form the server and cached and we have right topics and posts count
+and the last poster.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1002 height=846 id="Picture 59"
+src="doc_files/image052.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 52</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When we add
+a new topic or delete them, we remove forums from the cache via removeQueries
+method.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=994 height=518 id="Picture 60"
+src="doc_files/image053.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 53</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Up until
+this point we have been only getting data from the server. We have not been
+doing any setting data on the server but with mutations</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>that is
+going to change. Because the server data is going to update, we are going to
+look at invalidating the queries so that the data is removed</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>from the
+cache and we trigger a fetch. We will also update the cache in circumstances
+where when we send a mutation, we get new data back from the server.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We will also
+take a look at optimistic updates, and by optimistic we mean that we are
+hopeful that our mutation is succeed, but we are able to roll back</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>if for some
+reason it does not.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=966 height=779 id="Picture 61"
+src="doc_files/image054.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 54</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When we add,
+update or delete a forum, in the success callback of the useMutation hook we
+invalidate forums query.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>By
+invalidating the query, React Query will refetch the forum query and that is
+it.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=948 height=666 id="Picture 62"
+src="doc_files/image055.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 55</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I am on
+forums page.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=956 height=740 id="Picture 63"
+src="doc_files/image056.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 56</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>I am updating
+a forum.</span></p>
+
+<p class=MsoNormal><img border=0 width=954 height=726 id="Picture 64"
+src="doc_files/image057.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 57</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>After the
+update network call was made all forums are retrieved from the server. You see
+fresh time has changed.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In this case
+when we updated the forum, we made POST request then with another GET request
+we got the updated forum</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Actually,
+the updated data is automatically returned in the response of the mutation, so
+instead of refetching a query for the</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>forum and
+wasting a network call for data that we already have we can take advantage of
+the object returned by the mutation</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>function and
+immediately update the existing query with the new data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1210 height=537 id="Picture 65"
+src="doc_files/image058.jpg"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 58</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>If you try
+to go topics page and update a topic, you will see that after the update there
+is no loading indicator </span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>Fetching data</span><span
+style='color:black'>'</span><span style='font-size:14.0pt;line-height:107%'>
+like in forums case as we do not fetch data from the server.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>What we do
+is we get the topic</span><span style='color:black'>'</span><span
+style='font-size:14.0pt;line-height:107%'>s info from onSuccess callback of
+useMutation and use setQueryData method to update query cache.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1317 height=730 id="Picture 66"
+src="doc_files/image059.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 59</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In our app a
+user can mark a post as answered or unanswered. In this case we are going to
+use optimistic update with react query. By optimistic we mean that we are </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>hopeful that
+our mutation is succeed, but we are able to roll back if for some reason it
+does not. It is typically done to give an impression that your app is super-fast.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When dealing
+with optimistic updates though you do have to consider a scenario where the
+mutation can in fact error out. Managing optimistic updates is typically</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>not so
+straightforward.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=1048 height=631 id="Picture 67"
+src="doc_files/image060.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 60</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We need
+three callbacks for the optimistic updates, onMutate, onError and onSettled.
+onMutate is called before the mutation function is fired and is passed the same
+variables the mutation function</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>would
+receive. In our case it is post that we want to change <i>Answered</i>
+property.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=772 height=540 id="Picture 68"
+src="doc_files/image061.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 61</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The first
+thing we want to do within this function is cancelling any outgoing refetches
+so they do not overwrite our optimistic update. We use cancelQueries method on
+query client instance.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Next, we
+need to get hold off the current query data before we make any update. This
+will help us to roll back in case the mutation fails. For that we use
+getQueriesData method.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We are all
+set to update query data. We already know how to do it with setQueriesData
+method. We are going to return object with a key value set to previous posts
+data. This will be used</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>to roll back
+data in case the mutation errors out.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=771 height=590 id="Picture 69"
+src="doc_files/image062.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 62</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>onError
+function is called if the mutation encounters an error. In case of errors, we
+set previousPosts data as query data.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=677 height=511 id="Picture 70"
+src="doc_files/image063.png"></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 63</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>onSettled
+function is called when the mutation is either successful or when it encounters
+an error. In this function all we have to do is refetch posts.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

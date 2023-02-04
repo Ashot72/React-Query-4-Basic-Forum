@@ -1,0 +1,30 @@
+.posts {
+    .loadMore {
+        display: flex;
+        justify-content: center;
+    }
+
+    .item {
+        display: flex;
+        flex-direction: column;
+
+        .date {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .content {
+            margin-left: 10px;
+            margin-top: 4px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: flex-end
+        }
+    }
+
+    hr {
+        width: 100%;
+    }
+}

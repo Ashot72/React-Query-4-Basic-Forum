@@ -1,0 +1,42 @@
+{
+  "name": "forum",
+  "version": "0.0.1",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "deploy-prod": "gulp clean && gulp build --ship && gulp bundle --ship && gulp package-solution --ship"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.13.0",
+    "@microsoft/sp-dialog": "^1.13.0",
+    "@microsoft/sp-lodash-subset": "1.13.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.13.0",
+    "@microsoft/sp-property-pane": "1.13.0",
+    "@microsoft/sp-webpart-base": "1.13.0",
+    "@pnp/sp": "^2.0.13",
+    "@tanstack/react-query": "^4.22.0",
+    "@tanstack/react-query-devtools": "^4.22.0",
+    "moment": "^2.29.4",
+    "office-ui-fabric-react": "7.174.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-moment": "^1.1.2",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@microsoft/rush-stack-compiler-3.9": "0.4.47",
+    "@microsoft/sp-build-web": "1.13.0",
+    "@microsoft/sp-module-interfaces": "1.13.0",
+    "@microsoft/sp-tslint-rules": "1.13.0",
+    "@types/react": "16.9.51",
+    "@types/react-dom": "16.9.8",
+    "@types/webpack-env": "1.13.1",
+    "ajv": "~5.2.2",
+    "cross-env": "^7.0.3",
+    "gulp": "~4.0.2",
+    "webpack-merge": "^5.8.0"
+  }
+}
