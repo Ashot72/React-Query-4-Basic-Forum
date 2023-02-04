@@ -1,4 +1,4 @@
-# Remix Online Store
+# React Query Basic Forum
  [React Query](https://tanstack.com/query/v4) is a ReactJS preconfigured data management library which gives you power and control over server-side state management,
 fetching and caching of data, and error handling in a simple and declarative way without affecting the global state of your application.
 
@@ -10,7 +10,7 @@ To get started.
 ```
        Clone the repository
 
-       git https://github.com/Ashot72/React-Query-4-Basic-Forum
+       git clone https://github.com/Ashot72/React-Query-4-Basic-Forum
        cd React-Query-4-Basic-Forum
 
        # installs dependencies
